@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/cpp:1.0.6-debian-12
+FROM mcr.microsoft.com/devcontainers/cpp:1.0.7-ubuntu22.04
 RUN sudo apt update && sudo apt upgrade -y
 RUN sudo apt install clang-tidy -y
 RUN sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
