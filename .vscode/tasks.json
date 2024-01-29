@@ -23,7 +23,7 @@
 			"type": "shell",
 			"command": "make clean",
 			"options": {
-				"cwd": "${workspaceFolder}/build" // Adjust this to your build directory path
+				"cwd": "${workspaceFolder}/build" 
 			}
 		},
 		{
