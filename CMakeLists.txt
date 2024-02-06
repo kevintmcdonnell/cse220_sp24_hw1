@@ -23,7 +23,7 @@ target_compile_options(common INTERFACE -gdwarf-4 -Wall -Wextra -Wshadow -Wpedan
 
 if (BUILD_MAIN)
   add_executable(hw1_main src/hw1.c src/hw1_main.c)
-  target_link_libraries(hw1_main PRIVATE common)
+  target_link_libraries(hw1_main PRIVATE m)
   target_include_directories(hw1_main PUBLIC include)
 endif()
 
@@ -31,13 +31,13 @@ endif()
 file(GLOB SOURCES tests/src/tests_*.cpp)
 add_executable(run_all_tests ${SOURCES} src/hw1.c)
 target_include_directories(run_all_tests PUBLIC include tests/include)
-target_link_libraries(run_all_tests PRIVATE common gtest gtest_main pthread)
+target_link_libraries(run_all_tests PRIVATE gtest gtest_main pthread m)
 
 # Build standalone executables to test packetize_array_sf through Valgrind.
 set(TARGETS "01" "02" "03" "04")
 foreach(TARGET IN LISTS TARGETS)
   add_executable(packetize_array_sf${TARGET}_valgrind tests/src/packetize_array_sf${TARGET}_valgrind.c src/hw1.c)
-  target_link_libraries(packetize_array_sf${TARGET}_valgrind PRIVATE common)
+  target_link_libraries(packetize_array_sf${TARGET}_valgrind PRIVATE m)
   target_include_directories(packetize_array_sf${TARGET}_valgrind PUBLIC include tests/include)
 endforeach()
 
@@ -45,6 +45,6 @@ endforeach()
 set(TARGETS "01" "02" "03" "04" "05")
 foreach(TARGET IN LISTS TARGETS)
   add_executable(reconstruct_array_sf${TARGET}_valgrind tests/src/reconstruct_array_sf${TARGET}_valgrind.c src/hw1.c)
-  target_link_libraries(reconstruct_array_sf${TARGET}_valgrind PRIVATE common)
+  target_link_libraries(reconstruct_array_sf${TARGET}_valgrind PRIVATE m)
   target_include_directories(reconstruct_array_sf${TARGET}_valgrind PUBLIC include tests/include)
 endforeach()
